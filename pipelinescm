@@ -6,12 +6,10 @@ pipeline {
                 git url: 'https://github.com/Mathan2406/Jenkinsfile1.git', branch: 'main'
             }
         }
-        stage('Build') {
+        stage('Load Jenkinsfile') {
             steps {
-                dir('root/jenkinsfile') {
-                    script {
-                        load 'Jenkinsfile1'
-                    }
+                script {
+                    load 'Jenkinsfile1'
                 }
             }
         }
