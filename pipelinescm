@@ -1,23 +1,18 @@
 pipeline {
     agent any
-
     stages {
+        stage('Clone Repository') {
+            steps {
+                git url: 'https://github.com/Mathan2406/Jenkinsfile1.git', branch: 'main'
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building...'
-                // Insert build commands here, e.g., mvn clean install
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-                // Insert test commands here, e.g., mvn test
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-                // Insert deploy commands here
+                dir('root/jenkinsfile') {
+                    script {
+                        load 'Jenkinsfile1'
+                    }
+                }
             }
         }
     }
